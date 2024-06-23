@@ -1,0 +1,11 @@
+Section 1: Creating and Drawing the Circuit, initializes a quantum circuit with 2 qubits, applies a Hadamard gate to the first qubit and a CNOT gate to entangle the qubits.
+
+Section 2: Measuring Observables, Defines various Pauli operators, uses an Estimator to measure the expectation values of these observables.
+
+Section 3: Plotting Results, plots the expectation values of the observables using Matplotlib.
+
+Section 4: Generalizing for N Qubits, defines a function to create a quantum circuit with any number of qubits, Applies a Hadamard gate to the first qubit and CNOT gates to entangle all qubits in a chain.
+  
+Section 5: Creating Sparse Pauli Operators, creates sparse Pauli operators for measurements on a circuit with multiple qubits.
+
+Section 6: Running on IBM Quantum Backend, configures the quantum circuit to run on an IBM Quantum backend using the Qiskit Runtime service.
