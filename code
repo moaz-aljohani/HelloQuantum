@@ -1,3 +1,4 @@
+```python
 #---------------------1-------------------------
 from qiskit import QuantumCircuit as qubit  # Import QuantumCircuit class from qiskit library as qubit
 qc = qubit(2)  # Create a quantum circuit with 2 qubits
@@ -66,3 +67,4 @@ options.dynamical_decoupling.enable = True  # Enable dynamical decoupling
 options.dynamical_decoupling.sequence_type = "XY4"  # Set dynamical decoupling sequence type to XY4
 estimatorv2 = EstimatorV2(backend, options=options)  # Initialize EstimatorV2 with the backend and options
 job = estimatorv2.run([(qcTranspiled, operatorsTranspiledList)])  # Run the estimator job with the transpiled circuit and operators
+```
