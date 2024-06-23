@@ -3,7 +3,7 @@ from qiskit import QuantumCircuit as qubit  # Import QuantumCircuit class from q
 qc = qubit(2)  # Create a quantum circuit with 2 qubits
 qc.h(0)  # Apply a Hadamard gate to the first qubit (qubit 0), putting it in a superposition state
 qc.cx(0, 1)  # Apply a CNOT gate with the first qubit (qubit 0) as control and the second qubit (qubit 1) as target, entangling them
-# qc.draw(output="mpl")  # Draw the circuit diagram using matplotlib (mpl) 
+qc.draw(output="mpl")  # Draw the circuit diagram using matplotlib (mpl) 
 
 #---------------------2-------------------------
 from qiskit.quantum_info import Pauli  # Import Pauli class from qiskit library for Pauli operators
@@ -17,7 +17,7 @@ IX = Pauli("IX")  # Define a Pauli operator IX
 observable = [ZZ, ZI, IZ, XX, XI, IX]  # List of observables (tensor products of Pauli operators)
 estimator = Estimator()  # Initialize an Estimator to calculate expectation values
 job = estimator.run([qc] * len(observable), observable)  # Run the estimator on the quantum circuit for each observable
-# print(job.result())  # Print the result of the estimation
+print(job.result())  # Print the result of the estimation
 
 #---------------------3-------------------------
 import matplotlib.pyplot as plt  # Import pyplot class from matplotlib library for plotting
@@ -26,7 +26,7 @@ values = job.result().values  # Get the expectation values from the job result
 plt.plot(data, values, '-o')  # Plot the data with expectation values
 plt.xlabel("Observables")  # Set the label for the x-axis
 plt.ylabel("Expectation value")  # Set the label for the y-axis
-# plt.show()  # Show the plot
+plt.show()  # Show the plot
 
 #---------------------4-------------------------
 def QcforNQubits(n: int):  # Define a function that creates a quantum circuit with n qubits
@@ -42,7 +42,6 @@ qc.draw(output="mpl")  # Draw the circuit diagram using matplotlib (mpl)
 
 #---------------------5-------------------------
 from qiskit.quantum_info import SparsePauliOp  # Import SparsePauliOp class from qiskit library for sparse Pauli operators
-n = 10
 operatorStrings = ["Z" + "I" * i + "Z" + "I" * (n - 2 - i) for i in range(n - 1)]  # Create operator strings for ZZ measurements at different distances
 operators = [SparsePauliOp(operatorString) for operatorString in operatorStrings]  # Convert operator strings to SparsePauliOp objects
 print(operatorStrings)
@@ -54,7 +53,7 @@ from qiskit_ibm_runtime import EstimatorV2  # Import EstimatorV2 class for estim
 from qiskit_ibm_runtime import EstimatorOptions  # Import EstimatorOptions class for configuring the EstimatorV2
 backendName = "ibm_brisbane"  # Define the name of the backend to use
 # Initialize the IBM Quantum service with the provided API token and channel
-backend = QiskitRuntimeService(token="TOKEN_KEY", channel="ibm_quantum").backend(backendName)
+backend = QiskitRuntimeService(token="API_TOKEN", channel="ibm_quantum").backend(backendName)
 # Generate a preset pass manager for circuit optimization
 passManager = generate_preset_pass_manager(optimization_level=1, backend=backend)
 qcTranspiled = passManager.run(qc)  # Transpile the quantum circuit for the backend
