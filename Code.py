@@ -1,10 +1,9 @@
-```python
 #---------------------1-------------------------
 from qiskit import QuantumCircuit as qubit  # Import QuantumCircuit class from qiskit library as qubit
 qc = qubit(2)  # Create a quantum circuit with 2 qubits
 qc.h(0)  # Apply a Hadamard gate to the first qubit (qubit 0), putting it in a superposition state
 qc.cx(0, 1)  # Apply a CNOT gate with the first qubit (qubit 0) as control and the second qubit (qubit 1) as target, entangling them
-# qc.draw(output="mpl")  # Draw the circuit diagram using matplotlib (mpl)
+# qc.draw(output="mpl")  # Draw the circuit diagram using matplotlib (mpl) 
 
 #---------------------2-------------------------
 from qiskit.quantum_info import Pauli  # Import Pauli class from qiskit library for Pauli operators
@@ -67,4 +66,3 @@ options.dynamical_decoupling.enable = True  # Enable dynamical decoupling
 options.dynamical_decoupling.sequence_type = "XY4"  # Set dynamical decoupling sequence type to XY4
 estimatorv2 = EstimatorV2(backend, options=options)  # Initialize EstimatorV2 with the backend and options
 job = estimatorv2.run([(qcTranspiled, operatorsTranspiledList)])  # Run the estimator job with the transpiled circuit and operators
-```
